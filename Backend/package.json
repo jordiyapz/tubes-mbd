@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordiyapz/TUBES-MBD.git"
+  },
+  "keywords": [
+    "3DPrinting",
+    "e-commerce",
+    "web-app"
+  ],
+  "author": "Jordi Yaputra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jordiyapz/TUBES-MBD/issues"
+  },
+  "homepage": "https://github.com/jordiyapz/TUBES-MBD#readme"
+}

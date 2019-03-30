@@ -3,7 +3,7 @@ const dBModel = {
         _id: ObjectId,
         username: {
             firstname: String,
-            lastName: String
+           // lastName: String
         },
         password: String,
         email: String,
