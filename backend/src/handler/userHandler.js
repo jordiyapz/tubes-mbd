@@ -9,15 +9,37 @@ const listAllUser = (req, res) => {
 }
 
 const addUser = (req, res) => {
-    const body = req.body;
-    const user = new User(body);
-    User.create(user, (err, usr) => {
+    User.create(req.body, (err, user) => {
         if (err) return res.send(err);
-        res.json(usr);
+        res.json(user);
+    })
+}
+
+const getUser = (req, res) => {
+    User.findById(req.params.userID, (err, user) => {
+        if (err) return res.send(err);
+        res.json(user);
+    })
+}
+
+const updateUser = (req, res) => {
+    User.findOneAndUpdate({ _id: req.params.userID }, req.body, (err, user, result) => {
+        if (err) return res.send(err);
+        res.json({ message: 'Update successful!'});
+    })
+}
+
+const deleteUser = (req, res) => {
+    User.findOneAndDelete({ _id: req.params.userID} , (err) => {
+        if (err) return res.send(err);
+        res.json({ message: 'Delete successful!'});
     })
 }
 
 module.exports = {
     listAllUser,
-    addUser
+    addUser,
+    getUser,
+    updateUser,
+    deleteUser
 }

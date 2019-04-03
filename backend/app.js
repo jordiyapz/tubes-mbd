@@ -1,9 +1,10 @@
 const express = require('express');
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const path = require('path');
 
-const API_PORT = 7000;
+const dotenv = require('dotenv');
+dotenv.config();
+const API_PORT = process.env.PORT || 7000;
 const app = express();
 
 /** mongoose */
@@ -14,12 +15,12 @@ mongoose.connect(dbRoute, { useNewUrlParser: true }, (err) => {
     if (err) return console.log(err);
 });
 
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-const model = require('./src/model');
-const route = require('./src/route'); //importing route
-route(app);
+const model = require('./src/model'); //call model
+const router = require('./src/router'); //importing route
+router(app);
 
 app.listen(API_PORT, () => {
     console.log('Tride O\'Print RESTful API server started on port: ' + API_PORT);

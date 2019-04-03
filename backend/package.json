@@ -4,7 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "nodemon app.js"
+  },
+  "env": {
+    "PORT": "7000"
   },
   "repository": {
     "type": "git",
@@ -25,8 +29,9 @@
     "nodemon": "1.18.10"
   },
   "dependencies": {
-    "express": "^4.16.4",
-    "mongoose": "^5.4.20",
-    "body-parser": "^1.18.3"
+    "express": "4.16.4",
+    "mongoose": "5.4.20",
+    "body-parser": "1.18.3",
+    "dotenv": "7.0.0"
   }
 }
