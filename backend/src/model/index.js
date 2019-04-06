@@ -2,38 +2,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    email : {
-        type: String,
-        required: true
-    },
-    birthdate: Date,
-    phoneNumber: {
-        type: String,
-        required: true
-    },
-    address: [{
-        lists: [{
-            country: String,
-            city: String,
-            street: String,
-            zipcode: String
-        }],
-        primary: {
-            type: Number,
-            default: -1
-        }
-    }]
-});
-
 const productSchema = new Schema({
     name: {
         type: String,
@@ -97,6 +65,13 @@ const customerSchema = new Schema({
         required: true,
         ref: 'User'
     },
+    searchHistory: {
+        type: [String]
+    },
+    history: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Product'
+    }],
     wishlists: [{
         type: Schema.Types.ObjectId,
         ref: 'Product'
@@ -127,7 +102,7 @@ const sellerSchema = new Schema({
     }
 })
 
-const UserModel = mongoose.model('User', userSchema);
+const UserModel = require('./user');
 const ProductModel = mongoose.model('Product', productSchema);
 const CustomerModel = mongoose.model('Customer', customerSchema);
 const SellerModel = mongoose.model('Seller', sellerSchema);
