@@ -37,7 +37,9 @@ const model = require('./src/model'); //call model
 /** Routing middleware */
 const router = express.Router();
 const userRoutes = require('./src/router/users');
+const customerRoutes = require('./src/router/customers');
 app.use('/v1/user', userRoutes);
+app.use('/v1/customer', customerRoutes);
 
 //require('./src/router'); //importing route
 //router(app);

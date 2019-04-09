@@ -11,11 +11,7 @@
 //         .delete(controller.deleteUser);
 // }
 
-const express = require('express');
-const app = express();
-const router = express.Router();
-
 const userRoutes = require('./users');
-app.use('/v1', userRoutes);
+const customerRoutes = require('./customers');
 
-module.exports = router;
+/**Deprecated */

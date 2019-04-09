@@ -26,9 +26,20 @@ const getUser = (req, res, next) => {
 }
 
 const updateUser = (req, res, next) => {
-    User.findOneAndUpdate({ _id: req.params.userId }, req.body, (err, user, result) => {
-        if (err) return res.send(err);
-        res.status(200).json({ message: 'Update successful!'});
+    User.findOne({ _id: req.params.userId }, (err, user) => {
+        if (err) return res.status(404).json({ message: 'User not found! '});        
+        const body = req.body;
+        user.username = body.username;
+        user.phoneNumber = body.phoneNumber;
+        user.birthDate = body.birthDate;
+        user.email = body.email;
+        bcrypt.hash(body.password, 10, (err, hash) => {
+            if (err) return res.status(500).json({ error: err });
+            user.password = hash;
+            user.save();
+            res.status(200).json({ message: 'User updated' });      
+        });
+        
     })
 }
 
@@ -39,7 +50,7 @@ const deleteUser = (req, res, next) => {
     })
 }
 
-const signup = (req, res, next) => {
+const signupUser = (req, res, next) => {
     const body = req.body;
     const { username, email } = body;
     // User.find({ $or:[{username, email}] })
@@ -54,8 +65,12 @@ const signup = (req, res, next) => {
                         message: 'Email already used!'
                     })
                                         
-                    bcrypt.hash(body.password, process.env.SALT || 10, (err, hash) => {
-                        if (err) return res.status(500).json({error: err});
+                    bcrypt.hash(body.password, parseInt(process.env.SALT) || 10, (err, hash) => {
+                        if (err) {
+                            console.log(err);
+                            return res.status(500).json({ error: err });
+                        }
+                        
                         const {username, email, phoneNumber} = body;
                         const user = new User({
                             _id: new mongoose.Types.ObjectId(),
@@ -71,15 +86,11 @@ const signup = (req, res, next) => {
                             })
                             .catch(error => {
                                 console.log(error);
-                                res.status(500).json({ error });
+                                res.status(500).json({ error:error });
                             });                        
                     });                    
                 })
         });
-
-
-    
-
 }
 
 module.exports = {
@@ -88,5 +99,5 @@ module.exports = {
     getUser,
     updateUser,
     deleteUser,
-    signup
+    signupUser
 }

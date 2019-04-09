@@ -11,7 +11,8 @@ const userSchema = mongoose.Schema({
     },
     email : {
         type: String,
-        required: true
+        required: true,
+        match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
     },
     birthdate: Date,
     phoneNumber: {
@@ -29,6 +30,10 @@ const userSchema = mongoose.Schema({
             type: Number,
             default: -1
         }
+    }],
+    roles: [{
+        type: String,
+        enum: ['Admin', 'Customer', 'Seller', 'Printer']
     }]
 });
 

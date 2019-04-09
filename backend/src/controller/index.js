@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
-const User = mongoose.model('User');
-const { userHandler } = require('../handler');
-const { listAllUser, addUser, updateUser, getUser, deleteUser, signup } = userHandler;
+const { userHandler, customerHandler } = require('../handler');
+const { listAllUser, addUser, updateUser, getUser, deleteUser, signupUser } = userHandler;
+const { signupCustomer, signupExistingCustomer } = customerHandler;
 
 module.exports = {
     listAllUser,
@@ -9,5 +8,7 @@ module.exports = {
     getUser,
     updateUser,
     deleteUser,
-    signup
+    signupUser,
+    signupCustomer,
+    signupExistingCustomer
 }
