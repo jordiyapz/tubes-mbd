@@ -5,6 +5,17 @@ untuk tubes MBD Sem2
 Jalankan dengan cara membuka terminal di direktori backend, kemudian ketik "npm start"
 Ketikkan "localhost:7000" di alamat url di browser anda
 
+### Dokumentasi:
+```
+1. url: "/v1/user",
+    Desc: "Menampilkan semua user yang terdaftar",
+    Level: "Admin",
+    Ex: "localhost:7000/v1/user"
+2. url: "/v1/customer/signup",
+    Desc: "Signup user sebagai customer. Digunakan untuk user yang belum pernah daftar",
+    Level: "All"
+    Ex: "localhost:7000/v1/customer/signup"
+```
 # Tutorial inisialisasi GIT:
 1. Install git
 2. Buat folder untuk project
