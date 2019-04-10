@@ -9,12 +9,19 @@ Ketikkan "localhost:7000" di alamat url di browser anda
 ```
 1. url: "/v1/user",
     Desc: "Menampilkan semua user yang terdaftar",
-    Level: "Admin",
-    Ex: "localhost:7000/v1/user"
+    Level-Akses: "Admin",
+    Ex: "localhost:7000/v1/user",
+    Testing: "Belum"
 2. url: "/v1/customer/signup",
     Desc: "Signup user sebagai customer. Digunakan untuk user yang belum pernah daftar",
-    Level: "All"
+    Level-Akses: "All"
     Ex: "localhost:7000/v1/customer/signup"
+    Testing: "Belum"
+3. url: "/v1/customer/signup/existing",
+    Desc: "Signup user sebagai customer. Digunakan untuk user yang sudah terdaftar. Misalnya sebagai admin atau penjual atau pencetak.",
+    Level-Akses: "All"
+    Ex: "localhost:7000/v1/customer/signup/existing"
+    Testing: "Belum"
 ```
 # Tutorial inisialisasi GIT:
 1. Install git
