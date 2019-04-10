@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "nodemon app.js"
+    "dev": "nodemon app.js"
   },
   "env": {
     "PORT": "7000"
@@ -26,13 +26,14 @@
   },
   "homepage": "https://github.com/jordiyapz/TUBES-MBD#readme",
   "devDependencies": {
-    "nodemon": "1.18.10"
+    "nodemon": "^1.18.10"
   },
   "dependencies": {
-    "express": "4.16.4",
-    "mongoose": "5.4.20",
-    "body-parser": "1.18.3",
-    "dotenv": "7.0.0",
-    "bcrypt": "3.0.5"
+    "express": "^4.16.4",
+    "mongoose": "^5.4.20",
+    "body-parser": "^1.18.3",
+    "dotenv": "^7.0.0",
+    "bcrypt": "^3.0.5",
+    "jsonwebtoken": "^8.5.1"
   }
 }

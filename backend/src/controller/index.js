@@ -1,6 +1,6 @@
 const { userHandler, customerHandler } = require('../handler');
 const { listAllUser, addUser, updateUser, getUser, deleteUser, signupUser } = userHandler;
-const { signupCustomer, signupExistingCustomer } = customerHandler;
+const { signupCustomer, signupExistingCustomer, loginCustomer } = customerHandler;
 
 module.exports = {
     listAllUser,
@@ -10,5 +10,6 @@ module.exports = {
     deleteUser,
     signupUser,
     signupCustomer,
-    signupExistingCustomer
+    signupExistingCustomer,
+    loginCustomer
 }
