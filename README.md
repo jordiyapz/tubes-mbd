@@ -31,7 +31,11 @@ Ketikkan "localhost:7000" di alamat url di browser anda
 5. Ketik "git remote add origin \<link repo git\>". Link reponya: https://github.com/jordiyapz/TUBES-MBD.git
 6. Ketik "git pull origin master"
 7. Ketik "git checkout -b \<nama anda\>"
+<<<<<<< HEAD
 8. { Selamat ngoding }
+=======
+8. {Selamat ngoding}
+>>>>>>> abf45f429365980b3e6504685b8732a8311866fe
 
 # Tutorial ngodingnya:
 1. Biasakan ketik "git pull origin master" terlebih dahulu
