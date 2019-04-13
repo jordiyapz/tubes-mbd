@@ -106,8 +106,14 @@ const signupExistingCustomer = (req, res, next) => {
 
 const loginCustomer = (req, res, next) => {
     const body = req.body;
-    const {username} = body;
-    User.find({username}).exec()
+    const {input} = body;
+    let finder;
+    if (
+        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(input)
+    ) finder = User.find({ email: input });
+    else finder = User.find({ username: input });
+    
+    finder.exec()
         .then(users => {
             if (users.length > 0) {
                 const user = users[0];
@@ -116,15 +122,16 @@ const loginCustomer = (req, res, next) => {
                         if (customers.length > 0) {
                             const token = jwt.sign({
                                 userId: user._id,
-                                username,
+                                username: user.username,
                                 address: user.address,
                                 email: user.email,
                                 phoneNumber: user.phoneNumber,
-                                birthDate: user.birthDate
+                                birthDate: user.birthDate,
+                                roles: user.roles
                             }, 
                             'oPrint',
                             {
-                                expiresIn: "1h"
+                                expiresIn: "5m"
                             });
                             return res.status(200).json({
                                 message: 'Login successful!',
