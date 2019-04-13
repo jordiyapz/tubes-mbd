@@ -6,7 +6,7 @@ const checkAuth = require('../middleware/check-auth');
 const adminOnly = require('../middleware/admin-only');
 
 router.get('/', controller.listAllUser);
-router.post('/', checkAuth, controller.addUser);
+router.post('/', checkAuth, adminOnly, controller.addUser);
 router.get('/:userId', controller.getUser);
 router.put('/:userId', checkAuth, controller.updateUser);
 router.delete('/:userId', checkAuth, controller.deleteUser);

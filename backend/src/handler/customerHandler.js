@@ -31,7 +31,7 @@ const signupCustomer = (req, res, next) => {
                             username, 
                             email, 
                             phoneNumber,
-                            password: hash,                            
+                            password: hash                                                    
                         });
                         user.roles.push('Customer');
                         user.save()
