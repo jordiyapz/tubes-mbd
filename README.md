@@ -7,21 +7,111 @@ Ketikkan "localhost:7000" di alamat url di browser anda
 
 ### Dokumentasi:
 ```
-1. url: "/v1/user",
+1.  url: "/v1/user",
+    method: "GET",
+    require: {},
     Desc: "Menampilkan semua user yang terdaftar",
-    Level-Akses: "Admin",
-    Ex: "localhost:7000/v1/user",
-    Testing: "Belum"
-2. url: "/v1/customer/signup",
+    Level-Akses: "All",
+    Ex: "localhost:7000/v1/user"
+    
+2.  url: "/v1/customer/signup",
+    method: "POST",
+    require: {
+        body: {
+            username: String,
+            email: String,
+            password: String,
+            phoneNumber: String
+        },
+        headers: {
+            Content-Type: "application/json"
+        }
+    },
     Desc: "Signup user sebagai customer. Digunakan untuk user yang belum pernah daftar",
-    Level-Akses: "All"
+    Level-Akses: "All",
     Ex: "localhost:7000/v1/customer/signup"
-    Testing: "Belum"
-3. url: "/v1/customer/signup/existing",
+    
+3.  url: "/v1/customer/signup/existing",
+    method: "POST",
+    require: {
+        input: String,
+        password: String
+    },
     Desc: "Signup user sebagai customer. Digunakan untuk user yang sudah terdaftar. Misalnya sebagai admin atau penjual atau pencetak.",
-    Level-Akses: "All"
+    Level-Akses: "All",
+    Ex: "localhost:7000/v1/customer/login"
+4.  url: "/v1/customer/login",
+    method: "POST",
+    require: {
+        body: {
+            input: String,            
+            password: String           
+        },
+        headers: {
+            Content-Type: "application/json"
+        }
+    },
+    Desc: "Login user sebagai customer. Digunakan untuk user yang sudah terdaftar.",
+    Level-Akses: "All",
     Ex: "localhost:7000/v1/customer/signup/existing"
-    Testing: "Belum"
+    
+5.  url: "/v1/user/:userId",
+    method: "GET",
+    require: {},
+    Desc: "Menampilkan data user dengan id: userId",
+    Level-Akses: "All",
+    Ex: "localhost:7000/v1/user/5cac26486d15e04288ef4d52"
+    
+6.  url: "/v1/user",
+    method: "POST",
+    require: {
+        body: {
+            username: String,
+            email: String,
+            password: String,
+            phoneNumber: String,
+            [birthDate: Date], //format: yyyy-mm-dd
+            ...
+        },
+        headers: {
+            Content-Type: "application/json"
+            Authentication: "Bearer \<token\>"
+        }
+    },
+    Desc: "Menambahkan user secara paksa",
+    Level-Akses: "Admin",
+    Ex: "localhost:7000/v1/user"
+    
+7.  url: "/v1/user/:userId",
+    method: "PUT",
+    require: {
+        body: {
+            username: String,
+            email: String,
+            password: String,
+            phoneNumber: String,
+            [birthDate: Date], //format: yyyy-mm-dd
+            ...
+        },
+        headers: {
+            Content-Type: "application/json"
+            Authentication: "Bearer \<token\>"
+        }
+    },
+    Desc: "Menimpa data user secara dengan id: userId",
+    Level-Akses: "User",
+    Ex: "localhost:7000/v1/user/5cac26486d15e04288ef4d52"
+    
+8.  url: "/v1/user/:userId",
+    method: "DELETE",
+    require: {
+        headers: {
+            Authentication: "Bearer \<token\>"
+        }
+    },
+    Desc: "Menghapus data user dengan id: userId",
+    Level-Akses: "User",
+    Ex: "localhost:7000/v1/user/5cac26486d15e04288ef4d52"
 ```
 # Tutorial inisialisasi GIT:
 1. Install git
@@ -31,7 +121,7 @@ Ketikkan "localhost:7000" di alamat url di browser anda
 5. Ketik "git remote add origin \<link repo git\>". Link reponya: https://github.com/jordiyapz/TUBES-MBD.git
 6. Ketik "git pull origin master"
 7. Ketik "git checkout -b \<nama anda\>"
-8. { Selamat ngoding }
+8. Selamat ngoding
 
 # Tutorial ngodingnya:
 1. Biasakan ketik "git pull origin master" terlebih dahulu
