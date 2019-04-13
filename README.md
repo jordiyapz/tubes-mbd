@@ -24,7 +24,7 @@ Ketikkan "localhost:7000" di alamat url di browser anda
             phoneNumber: String
         },
         headers: {
-            Content-Type: "Application/JSON"
+            Content-Type: "application/json"
         }
     },
     Desc: "Signup user sebagai customer. Digunakan untuk user yang belum pernah daftar",
@@ -48,7 +48,7 @@ Ketikkan "localhost:7000" di alamat url di browser anda
             password: String           
         },
         headers: {
-            Content-Type: "Application/JSON"            
+            Content-Type: "application/json"
         }
     },
     Desc: "Login user sebagai customer. Digunakan untuk user yang sudah terdaftar.",
@@ -74,7 +74,7 @@ Ketikkan "localhost:7000" di alamat url di browser anda
             ...
         },
         headers: {
-            Content-Type: "Application/JSON",
+            Content-Type: "application/json"
             Authentication: "Bearer \<token\>"
         }
     },
@@ -94,7 +94,7 @@ Ketikkan "localhost:7000" di alamat url di browser anda
             ...
         },
         headers: {
-            Content-Type: "Application/JSON",
+            Content-Type: "application/json"
             Authentication: "Bearer \<token\>"
         }
     },
