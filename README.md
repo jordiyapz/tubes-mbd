@@ -40,6 +40,7 @@ Ketikkan "localhost:7000" di alamat url di browser anda
     Desc: "Signup user sebagai customer. Digunakan untuk user yang sudah terdaftar. Misalnya sebagai admin atau penjual atau pencetak.",
     Level-Akses: "All",
     Ex: "localhost:7000/v1/customer/login"
+    
 4.  url: "/v1/customer/login",
     method: "POST",
     require: {
