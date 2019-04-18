@@ -3,10 +3,17 @@ const User = mongoose.model('User');
 const bcrypt = require('bcrypt');
 
 const listAllUser = (req, res, next) => {
-    User.find({}, (err, user) => {
-        if (err) return res.send(err);
-        res.status(200).json(user);
-    })
+    User.find({})
+        .exec()
+        .then(docs => {
+            res.status(200).json({
+                count: docs.length,
+                users: docs
+            })
+        })
+        .catch(err => {
+            if (err) return res.status(500).json({err: err});
+        })
 }
 
 const addUser = (req, res, next) => {

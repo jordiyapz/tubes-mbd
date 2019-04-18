@@ -1,5 +1,9 @@
 const mongoose= require('mongoose');
 const Schema = mongoose.Schema;
+const productSub = new Schema({
+    filename: String,
+    path: String
+}, {_id: false});
 
 const productSchema = new Schema({
     name: {
@@ -11,12 +15,8 @@ const productSchema = new Schema({
         required: true,
         ref: 'Seller'
     },
-    images: [{
-        filename: String
-    }],
-    files: [{
-        filename: String
-    }],
+    images: [productSub],
+    files: [productSub],
     category: {
         type: String,
         default: 'other'
@@ -29,16 +29,19 @@ const productSchema = new Schema({
     }],
     
     price: Schema.Types.Decimal128,
-    discount: Number,
+    discount: {
+        type: Number,
+        default: 0
+    },
     cost: Schema.Types.Decimal128,
-
     available: Boolean,
     sold: Number,
 
     rating: {
         type: Schema.Types.Decimal128,
         min: 0,
-        max: 5
+        max: 5,
+        default: 0
     },
     reviews: [{
         userId: Schema.Types.ObjectId,

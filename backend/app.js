@@ -14,7 +14,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(dbRoute, { useNewUrlParser: true }, (err) => {
     if (err) return console.log(err);
 });
-
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -38,8 +38,12 @@ const model = require('./src/model'); //call model
 const router = express.Router();
 const userRoutes = require('./src/router/users');
 const customerRoutes = require('./src/router/customers');
+const sellerRoutes = require('./src/router/sellers');
+const productRoutes = require('./src/router/products');
 app.use('/v1/user', userRoutes);
 app.use('/v1/customer', customerRoutes);
+app.use('/v1/seller', sellerRoutes);
+app.use('/v1/product', productRoutes);
 
 //require('./src/router'); //importing route
 //router(app);
